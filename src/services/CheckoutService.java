@@ -1,7 +1,6 @@
 package services;
 
 import java.util.ArrayList;
-
 import entities.CartItem;
 import entities.Customer;
 import entities.IShippableItem;
@@ -31,6 +30,7 @@ public class CheckoutService
 		for(int i =0;i < cart.size(); i++)
 		{
 			double currentPrice = 0;
+			double currentWeight = 0;
 
 			CartItem currentCart  = cart.get(i);
 			Products currentProduct  = currentCart.getProduct();
@@ -40,12 +40,13 @@ public class CheckoutService
 			{
 				shipItems.add(currentProduct);
 				shipmentFees += currentProduct.getFees();
-				packageWeight += currentProduct.getWeight();
-				shipPrinting += "\n " + currentCart.getQuantity() + "x  " + currentProduct.getName() + "       " + currentProduct.getWeight() + "g";
+				currentWeight += currentProduct.getWeight() * currentCart.getQuantity();
+				shipPrinting += "\n " + currentCart.getQuantity() + "x  " + currentProduct.getName() + "       " + currentWeight + "g";
 			}
 			
 			printing += "\n " + currentCart.getQuantity() + "x  " + currentProduct.getName() + "       " + currentPrice;
 			subTotalPrice += currentPrice;
+			packageWeight += currentWeight;
 		}
 		
 		printing += "\n ---------------"; 
