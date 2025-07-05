@@ -7,11 +7,12 @@ import services.CheckoutService;
 public class mian {
 
 	public static void main(String[] args) {
-		eampleInTheChallenge();
+		//eampleInTheChallenge();
 		//noShip();
 		//emptyCart();
 		//expireProduct();
 		//outOfStock();
+		//outOfStock2();
 		//insuFficientBalance();
 	}
 	
@@ -22,9 +23,10 @@ public class mian {
 		Customer cust = new Customer("kerolos",100000.00);
 		cust.addProduct(cheese, 2);
 		cust.addProduct(Biscuits, 1);
-		
+
 		CheckoutService.Checkout(cust);
 	}
+	
 	
 	static void noShip() {
 		Products cheese = new Products("Cheese",100,5);
@@ -61,6 +63,19 @@ public class mian {
 		Customer cust = new Customer("kerolos",100000.00);
 		cust.addProduct(cheese, 6);
 
+		CheckoutService.Checkout(cust);
+	}
+	
+	static void outOfStock2() {
+		Products cheese = new Products("Cheese",100,5,15.00,400.00);
+		Products Biscuits = new Products("Biscutes",150,5,15.00,700.00);
+		
+		Customer cust = new Customer("kerolos",100000.00);
+		cust.addProduct(cheese, 2);
+		cust.addProduct(Biscuits, 1);
+		cust.addProduct(cheese, 2);
+		cust.addProduct(cheese, 2);
+		
 		CheckoutService.Checkout(cust);
 	}
 	

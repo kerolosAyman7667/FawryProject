@@ -137,7 +137,7 @@ public class Products implements IShippableItem, IExpiredItem
 		return fees;
 	}
 	
-	public double reduceQuantity() {
-		return quantity -= 1;
+	public double reduceQuantity(int amount) {
+		return quantity -= amount;
 	}
 }

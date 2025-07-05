@@ -22,7 +22,7 @@ public class Customer {
 		boolean found = false;
 		for (CartItem x : cart) {
 		    if (product.getName().equals(x.product.name)) {
-		        x.quantity += 1;
+		        x.addQuantity(quantity);
 		        found = true;
 		        break;
 		    }
@@ -32,7 +32,7 @@ public class Customer {
 		{
 			cart.add(new CartItem(product,quantity));
 		}
-		product.reduceQuantity();
+		product.reduceQuantity(quantity);
 	}
 	
 	public ArrayList<CartItem> getCart()
@@ -43,5 +43,10 @@ public class Customer {
 	public double getbalance()
 	{
 		return balance;
+	}
+	
+	public double reducebalance(double amount)
+	{
+		return balance -= amount;
 	}
 }

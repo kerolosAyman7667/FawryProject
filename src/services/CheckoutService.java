@@ -59,12 +59,14 @@ public class CheckoutService
 		printing += "\n Shipping        " + shipmentFees; 
 		printing += "\n Amount          " + totalPrice; 
 		shipPrinting += "\n Total package weight" + packageWeight / 1000 +"kg";
-
+		customer.reducebalance(totalPrice);
 		if(shipItems.size() > 0)
 		{
 			ShipmentService.Ship(shipItems);
 			System.out.println(shipPrinting);
 		}
 		System.out.println(printing);
+		//print customer balance
+		System.out.println("Your current balance: "+customer.getbalance());
 	}
 }

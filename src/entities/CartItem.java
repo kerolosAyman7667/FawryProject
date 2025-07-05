@@ -1,7 +1,7 @@
 package entities;
 
 public class CartItem {
-	protected int quantity;
+	private int quantity;
 	
 	protected Products product;
 	
@@ -15,6 +15,29 @@ public class CartItem {
 	 * @throws IllegalStateException if product is expired
 	 */
 	CartItem(Products product,int quantity)
+	{
+		this.quantity = quantity;
+		this.product = product;
+		this.validate(quantity);
+	}
+	
+	public Products getProduct()
+	{
+		return this.product;
+	}
+	
+	public int getQuantity()
+	{
+		return this.quantity;
+	}
+	
+	public int addQuantity(int quantity)
+	{
+		validate(quantity);
+		return this.quantity+= quantity;
+	}
+	
+	private void validate(int quantity)
 	{
 		if(quantity <= 0)
 		{
@@ -32,17 +55,5 @@ public class CartItem {
 		{
 			throw new IllegalStateException("Product is expired");
 		}
-		this.quantity = quantity;
-		this.product = product;
-	}
-	
-	public Products getProduct()
-	{
-		return this.product;
-	}
-	
-	public int getQuantity()
-	{
-		return this.quantity;
 	}
 }
